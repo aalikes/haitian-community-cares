@@ -167,7 +167,10 @@ run "backup files"   bash -c "ls -lht /root/hermes-backup*.zip ~/hermes-backup*.
 
 # The backup is a daily 3AM UTC cron that pushes to github.com/aalikes/VPS-Hermes.
 # A silently-expired git credential is the most common way this dies.
-LATEST_BACKUP="$(ls -t /root/hermes-backup*.zip "$HERMES_HOME"/hermes-backup*.zip 2>/dev/null | head -1)"
+BACKUP_DIRS=(/root)
+[ -n "${HERMES_HOME:-}" ] && [ "$HERMES_HOME" != "/root" ] && [ -d "$HERMES_HOME" ] && BACKUP_DIRS+=("$HERMES_HOME")
+LATEST_BACKUP="$(find "${BACKUP_DIRS[@]}" -maxdepth 1 -name 'hermes-backup*.zip' \
+                 -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)"
 if [ -n "${LATEST_BACKUP:-}" ]; then
   AGE_H=$(( ( $(date +%s) - $(stat -c %Y "$LATEST_BACKUP" 2>/dev/null || echo 0) ) / 3600 ))
   [ "$AGE_H" -gt 48 ] && note "WARN  newest local backup is ${AGE_H}h old (expected daily) — the 3AM cron is not completing."

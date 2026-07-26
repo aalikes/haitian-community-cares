@@ -89,10 +89,13 @@ api() {
 # --------------------------------------------------------------- list mode
 if [ "$LIST_ONLY" -eq 1 ]; then
   echo "Existing snapshots:"
-  api GET "/images?type=snapshot&sort=created:desc" \
-    | { command -v jq >/dev/null 2>&1 \
-        && jq -r '.images[] | "  \(.created)  \(.image_size // "?")GB  \(.description)"' \
-        || cat; }
+  SNAPS="$(api GET "/images?type=snapshot&sort=created:desc")"
+  if command -v jq >/dev/null 2>&1; then
+    printf '%s' "$SNAPS" \
+      | jq -r '.images[] | "  \(.created)  \(.image_size // "?")GB  \(.description)"'
+  else
+    printf '%s\n' "$SNAPS"
+  fi
   exit 0
 fi
 

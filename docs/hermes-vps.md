@@ -104,7 +104,15 @@ Only now is "repair vs rebuild" an informed question.
 ```bash
 sudo ./scripts/harden-hermes.sh            # dry run, shows the plan
 sudo ./scripts/harden-hermes.sh --apply    # commit the changes
+sudo ./scripts/harden-hermes.sh --user X   # force a specific target user
 ```
+
+**Check the second line of the output before applying.** It prints the user it
+has decided Hermes runs as. This stack runs as root, so it should say
+`user: root` — the script deliberately ignores `$SUDO_USER`, because sudo-ing
+from a personal login would otherwise point the logrotate rule at the wrong
+home and enable linger for the wrong account, fixing nothing while reporting
+success. If the detected user looks wrong, override it with `--user`.
 
 Fixes the four known config gaps: adds a 2GB swapfile, installs a logrotate rule
 for `~/logs/*.log`, enables linger, and caps journald. Idempotent — running it
@@ -131,6 +139,19 @@ installs or deletes anything.
 
 Output goes to `/tmp/hermes-diag-<timestamp>.txt` and ends in a `FINDINGS`
 block ranked CRIT / WARN / INFO.
+
+## Changing these scripts
+
+```bash
+./scripts/test-hermes-tools.sh
+```
+
+32 checks covering syntax, shellcheck (warning and info), flag handling, and
+the behaviours that matter: that `--redact` actually masks, that dry runs
+mutate nothing, that `harden` targets root rather than `$SUDO_USER`, that
+`verify` and `rescue` exit non-zero when a backup cannot be trusted, and that
+the retention count does not double when `$HOME` is `/root`. Run it after any
+edit.
 
 ## Failure modes it checks for
 

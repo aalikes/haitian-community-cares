@@ -27,10 +27,17 @@ echo
 
 # ------------------------------------------------------- 1. local archive
 echo "[1] Local backup archive"
-ARCHIVE="$(ls -t /root/hermes-backup*.zip "$HOME"/hermes-backup*.zip 2>/dev/null | head -1)"
 
-SEARCHED="/root"
-[ "$HOME" != "/root" ] && SEARCHED="/root or $HOME"
+# Deduplicate the search dirs: when $HOME is /root (which it is for this
+# stack), globbing both paths lists every archive twice, so the retention
+# count doubles and a rotation failure hides behind an inflated number.
+SEARCH_DIRS=(/root)
+[ -n "${HOME:-}" ] && [ "$HOME" != "/root" ] && [ -d "$HOME" ] && SEARCH_DIRS+=("$HOME")
+SEARCHED="$(printf '%s or ' "${SEARCH_DIRS[@]}" | sed 's/ or $//')"
+
+# find+sort rather than `ls -t` so odd filenames cannot skew the selection.
+ARCHIVE="$(find "${SEARCH_DIRS[@]}" -maxdepth 1 -name 'hermes-backup*.zip' \
+           -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)"
 
 if [ -z "$ARCHIVE" ]; then
   bad "no hermes-backup*.zip found in ${SEARCHED} — the backup job has not produced an archive"
@@ -45,7 +52,7 @@ else
 
   # Retention is documented as 7 days; a single archive means rotation is
   # eating them or only one has ever been written.
-  COUNT="$(ls -1 /root/hermes-backup*.zip "$HOME"/hermes-backup*.zip 2>/dev/null | wc -l | tr -d ' ')"
+  COUNT="$(find "${SEARCH_DIRS[@]}" -maxdepth 1 -name 'hermes-backup*.zip' 2>/dev/null | wc -l | tr -d ' ')"
   echo "  archives on disk: ${COUNT} (7-day retention expected)"
   [ "$COUNT" -le 1 ] && warn "only ${COUNT} archive present — expected up to 7"
 
