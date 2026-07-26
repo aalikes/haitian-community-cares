@@ -80,6 +80,20 @@ the `git push` has been failing silently for weeks since a token expired. Local
 commits pile up unpushed and nothing alerts. If this step fails, do not rebuild —
 you would be destroying the only current copy.
 
+### Shortcut: steps 2–3 in one command
+
+```bash
+./scripts/rescue-hermes.sh
+```
+
+Forces a fresh backup, verifies it, then runs diagnostics — in that order,
+because if the 3AM cron has been failing silently the state on the box is the
+only copy and must be captured before anything else. Bundles all output into
+`/tmp/hermes-rescue-<ts>.tar.gz` for transfer, and exits non-zero if the backup
+cannot be trusted. `--no-backup` skips the capture step.
+
+Still take the snapshot (step 1) first.
+
 ### 4. Decide
 
 With steps 2 and 3 done you know whether this is OOM, disk, a token, or billing.
