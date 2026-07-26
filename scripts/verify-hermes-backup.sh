@@ -118,10 +118,20 @@ else
 
   # Unpushed commits are the smoking gun for an expired credential: the cron
   # keeps committing locally, the push fails, nobody notices.
-  UNPUSHED="$(git -C "$REPO" log --oneline @{u}.. 2>/dev/null | wc -l | tr -d ' ')"
-  if [ "${UNPUSHED:-0}" -gt 0 ]; then
-    bad "${UNPUSHED} commit(s) committed locally but never pushed — the credential has almost certainly expired"
-    git -C "$REPO" log --oneline @{u}.. 2>/dev/null | head -5 | sed 's/^/    /'
+  #
+  # Check the upstream exists first. Without this, `log @{u}..` fails, the
+  # count comes back 0, and a repo that was NEVER wired to a remote looks
+  # identical to one that is perfectly in sync.
+  if git -C "$REPO" rev-parse --abbrev-ref '@{u}' >/dev/null 2>&1; then
+    UNPUSHED="$(git -C "$REPO" log --oneline '@{u}..' 2>/dev/null | wc -l | tr -d ' ')"
+    if [ "${UNPUSHED:-0}" -gt 0 ]; then
+      bad "${UNPUSHED} commit(s) committed locally but never pushed — the credential has almost certainly expired"
+      git -C "$REPO" log --oneline '@{u}..' 2>/dev/null | head -5 | sed 's/^/    /'
+    else
+      ok "no unpushed commits — local and remote are in sync"
+    fi
+  else
+    bad "no upstream branch configured for $(git -C "$REPO" rev-parse --abbrev-ref HEAD 2>/dev/null) — commits here were never pushed anywhere"
   fi
 
   # Read-only auth probe: does the stored credential still work?

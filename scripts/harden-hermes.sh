@@ -23,22 +23,57 @@ set -uo pipefail
 
 APPLY=0
 SWAP_GB=2
-[ "${1:-}" = "--apply" ] && APPLY=1
-case "${1:-}" in
-  -h|--help) sed -n '2,22p' "$0"; exit 0 ;;
-  --apply|"") ;;
-  *) echo "unknown flag: $1" >&2; exit 2 ;;
-esac
+USER_OVERRIDE=""
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --apply) APPLY=1; shift ;;
+    --user)
+      [ $# -ge 2 ] || { echo "--user needs a value" >&2; exit 2; }
+      USER_OVERRIDE="$2"; shift 2 ;;
+    -h|--help) sed -n '2,22p' "$0"; exit 0 ;;
+    *) echo "unknown flag: $1" >&2; exit 2 ;;
+  esac
+done
 
 if [ "$(id -u)" -ne 0 ]; then
   echo "Run as root — swap, logrotate and journald all need it." >&2
-  echo "  sudo $0 ${1:-}" >&2
+  echo "  sudo $0 $*" >&2
   exit 1
 fi
 
-TARGET_USER="${SUDO_USER:-root}"
+# Which user actually owns Hermes?
+#
+# Deliberately NOT $SUDO_USER: if you sudo from a personal login, SUDO_USER is
+# your account, but this stack runs as root (/root/hermes-backup.sh, and
+# `systemctl --user` invoked as root). Trusting SUDO_USER would point the
+# logrotate rule at the wrong home and enable linger for the wrong user —
+# silently fixing nothing while reporting success.
+detect_hermes_user() {
+  if [ -n "$USER_OVERRIDE" ]; then echo "$USER_OVERRIDE"; return; fi
+  # 1. whoever owns a hermes-gateway user unit
+  for f in /root/.config/systemd/user/hermes-gateway.service \
+           /home/*/.config/systemd/user/hermes-gateway.service; do
+    [ -f "$f" ] && { stat -c %U "$f"; return; }
+  done
+  # 2. whoever owns the documented backup script
+  [ -f /root/hermes-backup.sh ] && { echo root; return; }
+  # 3. whoever has the cron script/log dirs
+  for d in /root/scripts/hermes-reading /home/*/scripts/hermes-reading; do
+    [ -d "$d" ] && { stat -c %U "$d"; return; }
+  done
+  echo root   # documented default for this stack
+}
+
+TARGET_USER="$(detect_hermes_user)"
 TARGET_HOME="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 TARGET_HOME="${TARGET_HOME:-/root}"
+
+if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "$TARGET_USER" ]; then
+  echo "NOTE: invoked via sudo from '${SUDO_USER}', but Hermes looks like it runs"
+  echo "      as '${TARGET_USER}'. Targeting ${TARGET_USER}. Override with --user <name>."
+  echo
+fi
 
 CHANGES=0
 if [ "$APPLY" -eq 1 ]; then

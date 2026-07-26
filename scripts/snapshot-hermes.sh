@@ -24,7 +24,10 @@ API="https://api.hetzner.cloud/v1"
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --server) SERVER_NAME="${2:-}"; shift 2 ;;
+    --server)
+      # `shift 2` with only one arg left is a no-op that loops forever.
+      [ $# -ge 2 ] || { echo "--server needs a value" >&2; exit 2; }
+      SERVER_NAME="$2"; shift 2 ;;
     --list)   LIST_ONLY=1; shift ;;
     -h|--help) sed -n '2,18p' "$0"; exit 0 ;;
     *) echo "unknown flag: $1" >&2; exit 2 ;;
@@ -70,12 +73,17 @@ else
   exit 1
 fi
 
+# Keep the token out of the command line: curl's argv is world-readable via
+# /proc/<pid>/cmdline for as long as the request runs. -H @file reads headers
+# from a 0600 file instead.
+HDR_FILE="$(mktemp)"
+chmod 600 "$HDR_FILE"
+trap 'rm -f "$HDR_FILE"' EXIT INT TERM
+printf 'Authorization: Bearer %s\nContent-Type: application/json\n' "$HCLOUD_TOKEN" > "$HDR_FILE"
+
 api() {
   local method="$1" path="$2"; shift 2
-  curl -sS -X "$method" \
-    -H "Authorization: Bearer ${HCLOUD_TOKEN}" \
-    -H "Content-Type: application/json" \
-    "$@" "${API}${path}"
+  curl -sS -X "$method" -H @"$HDR_FILE" "$@" "${API}${path}"
 }
 
 # --------------------------------------------------------------- list mode
