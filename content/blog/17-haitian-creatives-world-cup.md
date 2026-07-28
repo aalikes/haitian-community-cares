@@ -5,6 +5,9 @@ category: Diaspora_Achievement
 source: The Haitian Times
 sourceUrl: https://haitiantimes.com/2026/07/13/haitian-creatives-world-cup-2026-reclaim-haiti-story/
 excerpt: "Haitian artists, designers, and storytellers work to ensure authentic Haitian identity and culture outlasts the World Cup spotlight, reclaiming Haiti's narrative for the long term."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Justice_Delayed_is_Justice_Denied%2C_We_Shall_Not_Be_Moved_Rally%2C_Washington_DC_%2831499724183%29.jpg"
+imageAttribution: "Photo: Lorie Shaull (CC BY-SA 2.0)"
 status: published
 ---
 

@@ -5,6 +5,9 @@ category: Diaspora_Achievement
 source: The Haitian Times
 sourceUrl: https://haitiantimes.com/2026/07/12/frantzdy-pierrot-triumphant-homecoming/
 excerpt: "Haiti striker Frantzdy Pierrot returns to his hometown Bas-Limbé for an emotional homecoming, continuing grassroots celebrations of Les Grenadiers' historic World Cup return after 52 years."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Justice_Delayed_is_Justice_Denied%2C_We_Shall_Not_Be_Moved_Rally%2C_Washington_DC_%2831499724183%29.jpg"
+imageAttribution: "Photo: Lorie Shaull (CC BY-SA 2.0)"
 status: published
 ---
 

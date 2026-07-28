@@ -5,6 +5,9 @@ category: Economic_Workforce
 source: Bloomberg
 sourceUrl: https://www.bloomberg.com
 excerpt: "NYC's healthcare and home care sectors face severe staffing crisis as Haitian TPS workers — who form the backbone of the care workforce — face work permit expiration."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/e/eb/US_Navy_100209-N-1092P-069_A_volunteer_from_Mouvman_Fanm_Aktif_Kafou_%28MOFKA%29%2C_a_female-led_community-support_organization%2C_distributes_goods_supplied_by_the_Maritime_Civil_Affairs_Team_to_Haitian_families.jpg"
+imageAttribution: "Photo: U.S. Navy (Public Domain)"
 status: published
 ---
 

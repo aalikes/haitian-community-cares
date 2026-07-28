@@ -5,6 +5,9 @@ category: Policy_Legal
 source: The Haitian Times
 sourceUrl: https://haitiantimes.com/2026/07/10/haiti-electoral-council-clears-316-parties/
 excerpt: "Haiti's electoral council clears 316 political parties for long-delayed elections, a key milestone toward restoring democratic governance after years of crisis."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
 status: published
 ---
 

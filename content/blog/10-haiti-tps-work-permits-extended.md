@@ -5,6 +5,9 @@ category: Policy_Legal
 source: The Haitian Times / WLRN
 sourceUrl: https://haitiantimes.com/2026/07/10/court-order-keeps-haiti-tps-work-permits-valid-through-july-24/
 excerpt: "A federal court order extends work permits for ~350,000 Haitian TPS holders through July 24, 2026, buying time as advocates push Congress for a permanent solution."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
 status: published
 ---
 

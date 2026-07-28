@@ -1,3 +1,15 @@
+---
+title: "Haiti TPS Dates Are Confusing. Here's What Each One Actually Means."
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "People keep seeing different Haiti TPS dates — February 3, July 24, August 3 — and wondering which one is real. Each date means something different, and only one of them is an expiration a court blocked."
+readTime: "2 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: draft
+---
+
 # Haiti TPS Dates Are Confusing. Here's What Each One Actually Means.
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

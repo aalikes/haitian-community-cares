@@ -5,6 +5,9 @@ category: Health_Education
 source: The Haitian Times
 sourceUrl: https://haitiantimes.com/2026/07/09/haiti-deploys-medical-team-venezuela/
 excerpt: "Haiti deploys a volunteer medical team to earthquake-hit Venezuela, demonstrating Haitian humanitarian leadership and solidarity despite domestic challenges."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/e/eb/US_Navy_100209-N-1092P-069_A_volunteer_from_Mouvman_Fanm_Aktif_Kafou_%28MOFKA%29%2C_a_female-led_community-support_organization%2C_distributes_goods_supplied_by_the_Maritime_Civil_Affairs_Team_to_Haitian_families.jpg"
+imageAttribution: "Photo: U.S. Navy (Public Domain)"
 status: published
 ---
 
