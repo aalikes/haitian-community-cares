@@ -5,6 +5,9 @@ category: Diaspora_Achievement
 source: The Haitian Times
 sourceUrl: https://haitiantimes.com/2026/07/11/grenadiers-welcome-in-les-cayes/
 excerpt: "Grenadiers Duckens Nazon and Josué Duverger tour Les Cayes to cheering crowds, continuing nationwide World Cup celebrations that bring joy to a nation hungry for good news."
+readTime: "1 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Justice_Delayed_is_Justice_Denied%2C_We_Shall_Not_Be_Moved_Rally%2C_Washington_DC_%2831499724183%29.jpg"
+imageAttribution: "Photo: Lorie Shaull (CC BY-SA 2.0)"
 status: published
 ---
 

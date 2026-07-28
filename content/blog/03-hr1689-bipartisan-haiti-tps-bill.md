@@ -1,3 +1,15 @@
+---
+title: "A Republican Co-Sponsored This Haiti TPS Bill. Here's Why HR1689 Matters."
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "Immigration bills almost never cross party lines, but HR1689 has a Republican cosponsor. The bill would require DHS to designate Haiti for TPS, and it has already passed the House."
+readTime: "2 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: published
+---
+
 # A Republican Co-Sponsored This Haiti TPS Bill. Here's Why HR1689 Matters.
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

@@ -1,3 +1,15 @@
+---
+title: "State of Haiti TPS: July 2026 — What Changed, What Didn't, and What's Next"
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "DHS terminated Haiti TPS, a court saved it, the Supreme Court weighed in, and Congress is still debating it. This July 2026 update explains what changed, what held steady, and the three ways the coming months could go."
+readTime: "3 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: draft
+---
+
 # State of Haiti TPS: July 2026 — What Changed, What Didn't, and What's Next
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

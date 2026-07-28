@@ -1,3 +1,15 @@
+---
+title: "HR9494: A Real Path to a Green Card for Haitians — What the Haitian Refugee Immigration Fairness Act Would Do"
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "Rep. Frederica Wilson introduced a bill that would give certain Haitian nationals a direct path to a green card. HR9494 requires no lottery and no sponsor — just an application filed within three years."
+readTime: "2 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: published
+---
+
 # HR9494: A Real Path to a Green Card for Haitians — What the Haitian Refugee Immigration Fairness Act Would Do
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

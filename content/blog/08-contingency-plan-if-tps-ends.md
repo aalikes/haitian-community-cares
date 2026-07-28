@@ -1,3 +1,15 @@
+---
+title: "If Haiti TPS Ends: A Contingency Plan for Haitian TPS Holders"
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "One court order is the only thing keeping Haiti TPS alive, and E-Verify calls that relief limited. Take these six steps now — while you still have status — to protect your documents, your options, and your income."
+readTime: "3 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: draft
+---
+
 # If Haiti TPS Ends: A Contingency Plan for Haitian TPS Holders
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

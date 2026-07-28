@@ -1,3 +1,16 @@
+---
+title: "Haitian TPS Holders: The I-9 & E-Verify Guide Your Employer Needs to See"
+date: 2026-07-13
+category: Policy_Legal
+source: E-Verify
+sourceUrl: https://www.e-verify.gov/about-e-verify/whats-new/update-on-termination-of-temporary-protected-status-for-haiti-release-0
+excerpt: "E-Verify released an operational alert on July 10, 2026 explaining how employers should handle Haitian TPS work permits. Here is exactly what to show your employer so paperwork confusion does not cost you your job."
+readTime: "2 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: published
+---
+
 # Haitian TPS Holders: The I-9 & E-Verify Guide Your Employer Needs to See
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

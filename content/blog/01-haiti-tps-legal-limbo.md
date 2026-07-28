@@ -1,3 +1,15 @@
+---
+title: "Haiti TPS in Legal Limbo: What the Court Stay, SCOTUS Ruling, and Congressional Bills Mean for You"
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "Haitian TPS holders have lived through a year of whiplash: a termination, a court stay, a Supreme Court ruling, and two bills in Congress. This guide lays out where Haiti TPS stands today, using only primary government sources."
+readTime: "2 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: published
+---
+
 # Haiti TPS in Legal Limbo: What the Court Stay, SCOTUS Ruling, and Congressional Bills Mean for You
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**

@@ -1,3 +1,15 @@
+---
+title: "Haiti Is the Last One Standing: What the Mass TPS Terminations Mean for Our Community"
+date: 2026-07-13
+category: Policy_Legal
+source: HCC Content Intelligence Pipeline
+excerpt: "DHS has ended Temporary Protected Status for more than a dozen countries. Haiti is the only one still standing, and only because a federal judge blocked the termination one day before it took effect."
+readTime: "2 min"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/2026-01-11_ICE_Out_for_Good_DC_protest_15-34-42.jpg"
+imageAttribution: "Photo: Wikimedia Commons (CC BY 4.0)"
+status: draft
+---
+
 # Haiti Is the Last One Standing: What the Mass TPS Terminations Mean for Our Community
 
 **By HCC Content Intelligence Pipeline · July 13, 2026**
