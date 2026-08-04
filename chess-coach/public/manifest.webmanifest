@@ -1,0 +1,18 @@
+{
+  "name": "Chess Coach",
+  "short_name": "Coach",
+  "description": "On-device Stockfish analysis, spoken coaching, and drills built from your own mistakes.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#16140f",
+  "theme_color": "#16140f",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

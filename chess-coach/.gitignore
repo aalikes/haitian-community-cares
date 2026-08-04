@@ -1,0 +1,6 @@
+node_modules/
+dist/
+# Fetched by scripts/copy-engine.mjs; ~7 MB of WASM, not worth versioning.
+public/engine/
+*.local
+.DS_Store
