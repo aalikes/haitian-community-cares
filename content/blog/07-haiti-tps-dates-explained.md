@@ -2,7 +2,7 @@
 title: "Haiti TPS Dates Are Confusing. Here's What Each One Actually Means."
 date: 2026-07-13
 category: "Policy_Legal"
-status: "draft"
+status: "archived"
 readTime: 2
 excerpt: "February 3, July 24, August 3 — three dates, and only one of them is a real TPS deadline. July 24 is a Form I-9 paperwork date, not the day your status expires."
 author: "HCC Content Intelligence Pipeline"

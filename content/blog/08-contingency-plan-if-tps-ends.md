@@ -2,7 +2,7 @@
 title: "If Haiti TPS Ends: A Contingency Plan for Haitian TPS Holders"
 date: 2026-07-13
 category: "Policy_Legal"
-status: "draft"
+status: "archived"
 readTime: 3
 excerpt: "The court stay keeping Haiti TPS alive is described as \"limited relief.\" These six steps — documentation, the asylum clock, other pathways, accredited legal help — are what to do now, while you still have status."
 author: "HCC Content Intelligence Pipeline"

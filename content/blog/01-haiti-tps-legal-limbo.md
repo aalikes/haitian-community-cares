@@ -2,7 +2,7 @@
 title: "Haiti TPS in Legal Limbo: What the Court Stay, SCOTUS Ruling, and Congressional Bills Mean for You"
 date: 2026-07-13
 category: "Policy_Legal"
-status: "published"
+status: "archived"
 readTime: 2
 excerpt: "Haiti TPS survives on a single federal court order — and E-Verify calls that protection \"limited relief.\" Here is the verified timeline, the EAD dates that are automatically extended, and exactly what to hand your employer."
 author: "HCC Content Intelligence Pipeline"

@@ -2,7 +2,7 @@
 title: "Haiti Is the Last One Standing: What the Mass TPS Terminations Mean for Our Community"
 date: 2026-07-13
 category: "Policy_Legal"
-status: "draft"
+status: "archived"
 readTime: 2
 excerpt: "DHS has terminated TPS for more than a dozen countries. Haiti is the only one still standing — and only because one federal judge blocked it the day before it would have taken effect."
 author: "HCC Content Intelligence Pipeline"
