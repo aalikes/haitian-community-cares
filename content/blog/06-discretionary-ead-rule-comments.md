@@ -1,7 +1,20 @@
+---
+title: "TPS Holders: A Proposed Rule Could Restrict Work Permits — Comments Due August 4"
+date: 2026-07-13
+category: "Policy_Legal"
+status: "draft"
+readTime: 2
+excerpt: "A proposed DHS rule would tighten access to discretionary work permits, with comments due August 4, 2026. Most Haitian TPS holders are not covered today — but they would be the moment TPS ends."
+author: "HCC Content Intelligence Pipeline"
+lang: "en"
+kreyolVersion: false
+---
+
 # TPS Holders: A Proposed Rule Could Restrict Work Permits — Comments Due August 4
 
-**By HCC Content Intelligence Pipeline · July 13, 2026**
-**Status: DRAFT — FOR REVIEW**
+**Read time:** ~2 min
+
+**Excerpt:** A proposed DHS rule would tighten access to discretionary work permits, with comments due August 4, 2026. Most Haitian TPS holders are not covered today — but they would be the moment TPS ends.
 
 ---
 

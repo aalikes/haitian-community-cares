@@ -1,6 +1,20 @@
+---
+title: "A Republican Co-Sponsored This Haiti TPS Bill. Here's Why HR1689 Matters."
+date: 2026-07-13
+category: "Policy_Legal"
+status: "published"
+readTime: 1
+excerpt: "HR1689 would take the decision out of DHS's hands and require Haiti to be designated for TPS. It already passed the House with a Republican cosponsor, and it is now waiting on the Senate calendar."
+author: "HCC Content Intelligence Pipeline"
+lang: "en"
+kreyolVersion: false
+---
+
 # A Republican Co-Sponsored This Haiti TPS Bill. Here's Why HR1689 Matters.
 
-**By HCC Content Intelligence Pipeline · July 13, 2026**
+**Read time:** ~1 min
+
+**Excerpt:** HR1689 would take the decision out of DHS's hands and require Haiti to be designated for TPS. It already passed the House with a Republican cosponsor, and it is now waiting on the Senate calendar.
 
 ---
 

@@ -1,11 +1,22 @@
 ---
 title: "Artists, Designers, and Storytellers Hope Their Haiti Outlasts the World Cup"
 date: 2026-07-13
-category: Diaspora_Achievement
-source: The Haitian Times
-sourceUrl: https://haitiantimes.com/2026/07/13/haitian-creatives-world-cup-2026-reclaim-haiti-story/
+category: "Diaspora_Achievement"
+status: "published"
+readTime: 1
 excerpt: "Haitian artists, designers, and storytellers work to ensure authentic Haitian identity and culture outlasts the World Cup spotlight, reclaiming Haiti's narrative for the long term."
-status: published
+source: "The Haitian Times"
+sourceUrl: "https://haitiantimes.com/2026/07/13/haitian-creatives-world-cup-2026-reclaim-haiti-story/"
+lang: "en"
+kreyolVersion: false
+---
+
+# Artists, Designers, and Storytellers Hope Their Haiti Outlasts the World Cup
+
+**Read time:** ~1 min
+
+**Excerpt:** Haitian artists, designers, and storytellers work to ensure authentic Haitian identity and culture outlasts the World Cup spotlight, reclaiming Haiti's narrative for the long term.
+
 ---
 
 As Haiti basks in the global attention brought by Les Grenadiers' historic World Cup appearance, a generation of Haitian artists, designers, and storytellers is working to ensure that the country's identity outlasts the tournament spotlight.
@@ -17,3 +28,7 @@ From fashion designers incorporating traditional Haitian motifs into contemporar
 The creative renaissance extends to Haiti's tech community, where startups showcased AI-powered solutions at Dev Expo 2026, and to the culinary world, where Haitian chefs are reclaiming the narrative around Haitian food. These efforts share a common thread: Haiti is not a problem to be solved, but a culture to be celebrated.
 
 "The World Cup is a moment," said one organizer of a Port-au-Prince art collective. "But Haiti is forever. Our job is to make sure the world knows that."
+
+---
+
+*Sources: [The Haitian Times](https://haitiantimes.com/2026/07/13/haitian-creatives-world-cup-2026-reclaim-haiti-story/)*

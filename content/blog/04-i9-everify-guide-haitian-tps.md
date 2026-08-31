@@ -1,6 +1,20 @@
+---
+title: "Haitian TPS Holders: The I-9 & E-Verify Guide Your Employer Needs to See"
+date: 2026-07-13
+category: "Policy_Legal"
+status: "published"
+readTime: 2
+excerpt: "E-Verify has finally told employers how to complete Form I-9 for Haitian TPS holders: write \"as per court order\" in Section 1. Print this guide, bring it to your employer, and stop losing jobs to paperwork confusion."
+author: "HCC Content Intelligence Pipeline"
+lang: "en"
+kreyolVersion: false
+---
+
 # Haitian TPS Holders: The I-9 & E-Verify Guide Your Employer Needs to See
 
-**By HCC Content Intelligence Pipeline · July 13, 2026**
+**Read time:** ~2 min
+
+**Excerpt:** E-Verify has finally told employers how to complete Form I-9 for Haitian TPS holders: write "as per court order" in Section 1. Print this guide, bring it to your employer, and stop losing jobs to paperwork confusion.
 
 ---
 

@@ -1,11 +1,22 @@
 ---
 title: "From Cap-Haïtien to Bas-Limbé: Grenadier Pierrot Receives Homecoming Hero's Welcome"
 date: 2026-07-12
-category: Diaspora_Achievement
-source: The Haitian Times
-sourceUrl: https://haitiantimes.com/2026/07/12/frantzdy-pierrot-triumphant-homecoming/
+category: "Diaspora_Achievement"
+status: "published"
+readTime: 1
 excerpt: "Haiti striker Frantzdy Pierrot returns to his hometown Bas-Limbé for an emotional homecoming, continuing grassroots celebrations of Les Grenadiers' historic World Cup return after 52 years."
-status: published
+source: "The Haitian Times"
+sourceUrl: "https://haitiantimes.com/2026/07/12/frantzdy-pierrot-triumphant-homecoming/"
+lang: "en"
+kreyolVersion: false
+---
+
+# From Cap-Haïtien to Bas-Limbé: Grenadier Pierrot Receives Homecoming Hero's Welcome
+
+**Read time:** ~1 min
+
+**Excerpt:** Haiti striker Frantzdy Pierrot returns to his hometown Bas-Limbé for an emotional homecoming, continuing grassroots celebrations of Les Grenadiers' historic World Cup return after 52 years.
+
 ---
 
 Thousands of supporters lined the roads from Cap-Haïtien to Bas-Limbé to welcome Haiti striker Frantzdy Pierrot home, continuing a series of grassroots celebrations honoring Les Grenadiers' historic return to the FIFA World Cup after 52 years.
@@ -17,3 +28,7 @@ The celebration was deeply personal for the community. Pierrot reunited with chi
 Since 2020, Pierrot has supported local club Elite FC of Bas-Limbé through his foundation, providing financial assistance and equipment for youth teams competing in the U-10, U-15, and U-20 age groups. "Bas-Limbé gave me this opportunity," he said. "I'm the first person from this community to represent it at this level, and I believe it's my responsibility to help the next generation of talented young people here."
 
 Pierrot becomes the latest member of Haiti's World Cup squad to receive a hometown welcome, following Duckens Nazon, Martin Expérience, and Josué Duverger, who were celebrated across the northern and southern regions. The celebrations underscore the deep connection between Les Grenadiers and a nation that waited more than five decades to see their team return to soccer's biggest stage.
+
+---
+
+*Sources: [The Haitian Times](https://haitiantimes.com/2026/07/12/frantzdy-pierrot-triumphant-homecoming/)*

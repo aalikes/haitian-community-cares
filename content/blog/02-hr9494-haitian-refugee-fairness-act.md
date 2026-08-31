@@ -1,6 +1,20 @@
+---
+title: "HR9494: A Real Path to a Green Card for Haitians — What the Haitian Refugee Immigration Fairness Act Would Do"
+date: 2026-07-13
+category: "Policy_Legal"
+status: "published"
+readTime: 2
+excerpt: "HR9494 would let qualifying Haitian nationals apply directly for a green card — no lottery, no sponsor, and with five common grounds of inadmissibility waived. It is the most ambitious Haiti immigration bill of this Congress, and it is sitting in committee."
+author: "HCC Content Intelligence Pipeline"
+lang: "en"
+kreyolVersion: false
+---
+
 # HR9494: A Real Path to a Green Card for Haitians — What the Haitian Refugee Immigration Fairness Act Would Do
 
-**By HCC Content Intelligence Pipeline · July 13, 2026**
+**Read time:** ~2 min
+
+**Excerpt:** HR9494 would let qualifying Haitian nationals apply directly for a green card — no lottery, no sponsor, and with five common grounds of inadmissibility waived. It is the most ambitious Haiti immigration bill of this Congress, and it is sitting in committee.
 
 ---
 

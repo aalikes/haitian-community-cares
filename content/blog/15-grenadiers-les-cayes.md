@@ -1,11 +1,22 @@
 ---
 title: "World Cup Grenadiers Greeted by Cheering Crowds in Southern Haiti"
 date: 2026-07-11
-category: Diaspora_Achievement
-source: The Haitian Times
-sourceUrl: https://haitiantimes.com/2026/07/11/grenadiers-welcome-in-les-cayes/
+category: "Diaspora_Achievement"
+status: "published"
+readTime: 1
 excerpt: "Grenadiers Duckens Nazon and Josué Duverger tour Les Cayes to cheering crowds, continuing nationwide World Cup celebrations that bring joy to a nation hungry for good news."
-status: published
+source: "The Haitian Times"
+sourceUrl: "https://haitiantimes.com/2026/07/11/grenadiers-welcome-in-les-cayes/"
+lang: "en"
+kreyolVersion: false
+---
+
+# World Cup Grenadiers Greeted by Cheering Crowds in Southern Haiti
+
+**Read time:** ~1 min
+
+**Excerpt:** Grenadiers Duckens Nazon and Josué Duverger tour Les Cayes to cheering crowds, continuing nationwide World Cup celebrations that bring joy to a nation hungry for good news.
+
 ---
 
 Hundreds of residents lined the streets of Les Cayes to welcome Grenadiers Duckens Nazon and Josué Duverger as the Haitian national team players continued a nationwide tour celebrating the country's historic return to the 2026 FIFA World Cup.
@@ -17,3 +28,7 @@ The Les Cayes celebration follows earlier homecoming events in Cap-Haïtien and 
 The players never had the opportunity to celebrate their World Cup qualification on home soil. Ongoing gang violence forced the team to play every qualifier and tournament match abroad, and the national squad conducted all training camps outside Haiti. The homecoming tours, however improvised, are the first chance for many supporters to see their heroes in person.
 
 "This is more than football," said one supporter in Les Cayes. "This is about national pride. These players show the world that Haiti can still produce greatness, even in the middle of crisis."
+
+---
+
+*Sources: [The Haitian Times](https://haitiantimes.com/2026/07/11/grenadiers-welcome-in-les-cayes/)*
