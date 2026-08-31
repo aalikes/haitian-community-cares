@@ -2,7 +2,7 @@
 title: "State of Haiti TPS: July 2026 — What Changed, What Didn't, and What's Next"
 date: 2026-07-13
 category: "Policy_Legal"
-status: "draft"
+status: "archived"
 readTime: 2
 excerpt: "Terminated by DHS, saved by one judge, challenged at the Supreme Court, and debated in Congress. Here is where Haiti TPS actually stands, what changed in June and July, and the three ways this ends."
 author: "HCC Content Intelligence Pipeline"

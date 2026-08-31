@@ -1,21 +1,21 @@
 ---
-title: "Court Order Keeps Haiti TPS Work Permits Valid Through July 24 — What You Need to Know"
+title: "Court Order Keeps Haiti TPS Work Permits Valid — What July 24 Actually Means"
 date: 2026-07-10
 category: "Policy_Legal"
-status: "published"
+status: "in_review"
 readTime: 1
-excerpt: "A federal court order extends work permits for ~350,000 Haitian TPS holders through July 24, 2026, buying time as advocates push Congress for a permanent solution."
+excerpt: "A federal court order keeps work permits valid for roughly 350,000 Haitian TPS holders. July 24, 2026 is a Form I-9 date for employer paperwork — not the day your status expires."
 source: "The Haitian Times / WLRN"
 sourceUrl: "https://haitiantimes.com/2026/07/10/court-order-keeps-haiti-tps-work-permits-valid-through-july-24/"
 lang: "en"
 kreyolVersion: false
 ---
 
-# Court Order Keeps Haiti TPS Work Permits Valid Through July 24 — What You Need to Know
+# Court Order Keeps Haiti TPS Work Permits Valid — What July 24 Actually Means
 
 **Read time:** ~1 min
 
-**Excerpt:** A federal court order extends work permits for ~350,000 Haitian TPS holders through July 24, 2026, buying time as advocates push Congress for a permanent solution.
+**Excerpt:** A federal court order keeps work permits valid for roughly 350,000 Haitian TPS holders. July 24, 2026 is a Form I-9 date for employer paperwork — not the day your status expires.
 
 ---
 
