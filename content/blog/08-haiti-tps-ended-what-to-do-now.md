@@ -7,7 +7,7 @@ readTime: 4
 excerpt: "Haiti TPS ended on July 27, 2026, and TPS work permits are no longer valid. There is no grace period. But there are still real steps to take this week — and the most important one is free."
 author: "HCC Content Intelligence Pipeline"
 lang: "en"
-kreyolVersion: false
+kreyolVersion: true
 ---
 
 # Haiti TPS Has Ended. Here Is What To Do Now.

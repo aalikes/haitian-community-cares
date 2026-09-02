@@ -28,6 +28,14 @@ REQUIRED = ["title", "date", "category", "status", "readTime", "excerpt",
 VALID_STATUS = {"draft", "in_review", "published", "archived"}
 WORDS_PER_MINUTE = 225
 
+# The skill requires a Kreyol version alongside the English one. A Kreyol
+# article carries Kreyol labels, so the two required elements are matched per
+# language rather than assuming English.
+LABELS = {
+    "en": ("Read time", "Excerpt"),
+    "ht": ("Tan lekti", "Rezime"),
+}
+
 
 def split_frontmatter(raw: str):
     if not raw.startswith("---"):
@@ -44,15 +52,21 @@ def split_frontmatter(raw: str):
     return meta, "\n".join(lines[end + 1:])
 
 
-def article_body(body: str) -> str:
-    """The prose only: everything after the rule below the Excerpt block."""
-    marker = re.search(r"^\*\*Excerpt:\*\*.*?^---$", body, flags=re.M | re.S)
+def labels_for(lang: str) -> tuple[str, str]:
+    return LABELS.get((lang or "en").lower(), LABELS["en"])
+
+
+def article_body(body: str, lang: str = "en") -> str:
+    """The prose only: everything after the rule below the excerpt block."""
+    _, excerpt_label = labels_for(lang)
+    marker = re.search(rf"^\*\*{re.escape(excerpt_label)}:\*\*.*?^---$",
+                       body, flags=re.M | re.S)
     text = body[marker.end():] if marker else body
-    return re.sub(r"^\*Sources?:.*$", "", text, flags=re.M | re.I)
+    return re.sub(r"^\*(Sources?|Sous):.*$", "", text, flags=re.M | re.I)
 
 
-def read_time(body: str) -> int:
-    return max(1, round(len(article_body(body).split()) / WORDS_PER_MINUTE))
+def read_time(body: str, lang: str = "en") -> int:
+    return max(1, round(len(article_body(body, lang).split()) / WORDS_PER_MINUTE))
 
 
 def check(path: Path) -> list[str]:
@@ -71,14 +85,28 @@ def check(path: Path) -> list[str]:
         problems.append(
             f"status {meta['status']!r} not one of {sorted(VALID_STATUS)}")
 
+    lang = meta.get("lang", "en")
+    if lang.lower() not in LABELS:
+        problems.append(f"lang {lang!r} not one of {sorted(LABELS)}")
+    time_label, excerpt_label = labels_for(lang)
+
     # The two elements the skill calls non-negotiable.
-    body_time = re.search(r"^\*\*Read time:\*\*\s*~?(\d+)\s*min", body, flags=re.M)
-    body_excerpt = re.search(r"^\*\*Excerpt:\*\*\s*(.+?)(?:\n\n|\n---)",
+    body_time = re.search(rf"^\*\*{re.escape(time_label)}:\*\*\s*~?(\d+)\s*min",
+                          body, flags=re.M)
+    body_excerpt = re.search(rf"^\*\*{re.escape(excerpt_label)}:\*\*\s*(.+?)(?:\n\n|\n---)",
                              body, flags=re.M | re.S)
     if not body_time:
-        problems.append("body is missing the '**Read time:**' line")
+        problems.append(f"body is missing the '**{time_label}:**' line")
     if not body_excerpt:
-        problems.append("body is missing the '**Excerpt:**' line")
+        problems.append(f"body is missing the '**{excerpt_label}:**' line")
+
+    # A translation must name the article it came from, and that file must exist.
+    if lang != "en":
+        source = meta.get("translationOf")
+        if not source:
+            problems.append("translation is missing 'translationOf'")
+        elif not (path.parent / source).exists():
+            problems.append(f"translationOf points at a missing file: {source}")
 
     h1 = re.search(r"^#\s+(.+)$", body, flags=re.M)
     if not h1:
@@ -91,10 +119,10 @@ def check(path: Path) -> list[str]:
         if " ".join(body_excerpt.group(1).split()) != " ".join(meta["excerpt"].split()):
             problems.append("body excerpt differs from frontmatter excerpt")
 
-    actual = read_time(body)
+    actual = read_time(body, lang)
     if body_time and int(body_time.group(1)) != actual:
         problems.append(
-            f"body Read time is {body_time.group(1)} min, actual is {actual} min")
+            f"body {time_label} is {body_time.group(1)} min, actual is {actual} min")
     if meta.get("readTime") and int(meta["readTime"]) != actual:
         problems.append(
             f"frontmatter readTime is {meta['readTime']}, actual is {actual}")
@@ -107,10 +135,12 @@ def fix_read_time(path: Path) -> bool:
     meta, body = split_frontmatter(raw)
     if meta is None:
         return False
-    actual = read_time(body)
+    lang = meta.get("lang", "en")
+    time_label, _ = labels_for(lang)
+    actual = read_time(body, lang)
     updated = re.sub(r"^readTime:.*$", f"readTime: {actual}", raw, flags=re.M)
-    updated = re.sub(r"^\*\*Read time:\*\*.*$",
-                     f"**Read time:** ~{actual} min", updated, flags=re.M)
+    updated = re.sub(rf"^\*\*{re.escape(time_label)}:\*\*.*$",
+                     f"**{time_label}:** ~{actual} min", updated, flags=re.M)
     if updated != raw:
         path.write_text(updated, encoding="utf-8")
         return True
@@ -145,7 +175,9 @@ def main():
     for path in paths:
         problems = check(path)
         meta, _ = split_frontmatter(path.read_text(encoding="utf-8"))
-        if meta and str(meta.get("kreyolVersion", "")).lower() != "true":
+        # A Kreyol article is not itself owed a Kreyol version.
+        if (meta and meta.get("lang", "en") == "en"
+                and str(meta.get("kreyolVersion", "")).lower() != "true"):
             owed_kreyol.append(path.name)
         if problems:
             failures += 1
