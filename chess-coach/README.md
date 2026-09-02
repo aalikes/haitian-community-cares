@@ -32,6 +32,11 @@ back until they stick.
 **Track** — a ranked list of your recurring problems, accuracy over time, and
 which phase of the game leaks the most.
 
+**Time** — what the clock says about your chess: whether your blunders come on
+moves you played in a second, whether the damage happens once you are short of
+time, and whether you burn the clock in the opening and then have nothing left
+for the position that actually needed it.
+
 ## Quick start
 
 ```sh
@@ -99,6 +104,53 @@ side-independent, so if the app guessed the wrong colour for "you", the toggle
 in the review header re-scopes the whole analysis — commentary included —
 without touching the engine.
 
+## What the clock says
+
+Every game imported from Chess.com or Lichess already carries a full record of
+how long each move took, in PGN comments (`{[%clk 0:02:30.5]}`). The reading is
+the time *remaining* after the move, with the increment already credited, so
+the time a move actually took is `previous + increment − current`. A player who
+moves instantly on a 2-second increment therefore gains time, which is why the
+increment has to be read from the `TimeControl` tag rather than assumed to be
+zero.
+
+Moves are then grouped three ways and each group is scored on the same terms —
+how much win probability it gave away per move:
+
+| Group | Definition |
+|---|---|
+| Snap moves | under a third of your median move time *in that game* |
+| Normal pace | everything in between |
+| Long thinks | over twice your median |
+| In time trouble | played with under 20% of the starting time left |
+
+**Fast and slow are measured against your own pace, not a fixed number of
+seconds.** Three seconds is a long think in bullet and an instant move in
+rapid; a fixed threshold would call every bullet move rushed and every rapid
+move considered. For the same reason, pooling games on the Insights tab
+combines the *buckets* rather than the raw times — each game is classified
+against its own tempo first, so a blitz session cannot drown out a rapid one.
+
+Findings are only stated when a group has at least 3 moves in it and is at
+least 1.4× worse than the comparison group. One fast blunder is a story, not a
+pattern, and "slow down" is bad advice on that evidence.
+
+### What it cannot tell you
+
+**It measures pace, not intent.** A one-second move can be an instant
+recapture that needed no thought. The tool reports that your fast moves cost
+more, which is a prompt to look, not a diagnosis.
+
+**Correspondence games are excluded.** "Time spent" on a daily game is the gap
+between sitting down at a computer twice, which says nothing about chess.
+
+**Pasted PGNs without a `TimeControl` tag get an estimate.** The increment is
+guessed by looking for moves where a player's clock went *up*, which only
+happens if they sometimes moved faster than the increment. If nobody ever did,
+the guess is zero and every move is under-reported by the true increment — the
+same amount each time, so comparisons between moves still hold even though the
+absolute seconds do not. The review says so when this happens.
+
 ## Things worth knowing before you rely on it
 
 **Depth matters more than you would think.** The default is 14, which catches
@@ -165,9 +217,11 @@ src/
     evaluation.ts   Score handling and the win-probability curve
     classify.ts     Win-probability thresholds -> blunder / mistake / inaccuracy
     motifs.ts       Weakness detection from the board and the refutation line
+    clock.ts        PGN clock comments -> seconds per move
     util.ts         PGN, SAN/UCI conversion, material, phase
   coach/
     commentary.ts   Written and spoken explanations
+    timing.ts       Pace buckets, time trouble, and the findings they produce
     notation.ts     "Nxd4+" -> "knight takes d4, check", for the voice
     drills.ts       Drill generation, prioritisation, spaced repetition
     profile.ts      Cross-game weakness aggregation

@@ -1,5 +1,7 @@
 import { QUALITY_COLORS } from "../chess/classify";
+import { formatDuration } from "../chess/clock";
 import { MOVE_QUALITIES } from "../types";
+import { TimingPanel } from "./TimingPanel";
 import { useAppState } from "./state";
 
 /**
@@ -139,6 +141,19 @@ export function InsightsScreen() {
           })}
         </ul>
       </section>
+
+      {profile.timing && (
+        <section className="card">
+          <h2>Your clock</h2>
+          <p className="muted small">
+            From {profile.timedGames} game{profile.timedGames === 1 ? "" : "s"} that carried clock
+            data. Fast and slow are judged against your own pace in each game, so blitz and rapid
+            can be pooled without one drowning out the other. Total thinking time:{" "}
+            {formatDuration(profile.timing.totalSeconds)}.
+          </p>
+          <TimingPanel report={profile.timing} />
+        </section>
+      )}
 
       {profile.openings.length > 0 && (
         <section className="card">

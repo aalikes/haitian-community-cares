@@ -7,10 +7,12 @@ import {
   volatilityWeight,
   volatilityWindow,
 } from "../chess/classify";
+import { moveTimes, parseTimeControl } from "../chess/clock";
 import { negate, scoreToWinProbability, type Score } from "../chess/evaluation";
 import { detectMotifs } from "../chess/motifs";
 import { parsePgn, phaseOf, pvToSan, sanLineToUci } from "../chess/util";
 import { buildCommentary } from "../coach/commentary";
+import { buildGameTiming } from "../coach/timing";
 import type {
   AnalysedMove,
   Color,
@@ -26,8 +28,9 @@ import { getEngine, type EngineLine, type SearchResult } from "./engine";
 // Bump whenever a change alters the numbers a stored analysis would produce.
 // Games analysed under an older version keep their old figures until
 // re-analysed, and the review screen says so rather than mixing the two
-// silently. v2: adopted Lichess's thresholds and accuracy curve.
-export const ANALYSIS_VERSION = 2;
+// silently. v2: adopted Lichess's thresholds and accuracy curve. v3: added
+// clock data, which older analyses have no record of.
+export const ANALYSIS_VERSION = 3;
 
 export interface AnalyseOptions {
   depth?: number;
@@ -50,8 +53,17 @@ export async function analyseGame(
 ): Promise<GameAnalysis> {
   const depth = options.depth ?? 14;
   const multiPv = Math.max(2, options.multiPv ?? 3);
-  const { moves } = parsePgn(game.pgn);
+  const { moves, headers, clocks, elapsed } = parsePgn(game.pgn);
   if (moves.length === 0) throw new Error("This game has no moves to analyse.");
+
+  // The clock data was already sitting in the PGN; reading it costs nothing.
+  const control = parseTimeControl(game.timeControl ?? headers.TimeControl);
+  const times = moveTimes(
+    clocks,
+    elapsed,
+    moves.map((move) => move.color as Color),
+    control,
+  );
 
   // One FEN per position: before move 0, then after every move.
   const positions: string[] = [moves[0]!.before, ...moves.map((move) => move.after)];
@@ -115,6 +127,8 @@ export async function analyseGame(
       bestLineSan: pvToSan(move.before, bestLineUci, 6),
       punishLineSan: pvToSan(move.after, punishLineUci, 5),
       tags: [],
+      secondsSpent: times.spent[ply] ?? null,
+      clockAfter: times.remaining[ply] ?? null,
     };
 
     const motif = detectMotifs({
@@ -146,8 +160,31 @@ export async function analyseGame(
     hero: game.hero,
     moves: analysed,
     ...aggregate(analysed, game.hero),
+    timing: timingFor(analysed, game.hero, control.kind, times),
     completedAt: Date.now(),
   };
+}
+
+/**
+ * Correspondence games are excluded: "time spent" there is the gap between
+ * sitting down at a computer twice, not how long anyone thought.
+ */
+function timingFor(
+  moves: AnalysedMove[],
+  hero: Color,
+  kind: ReturnType<typeof parseTimeControl>["kind"],
+  times: ReturnType<typeof moveTimes>,
+): GameAnalysis["timing"] {
+  if (kind === "correspondence") return undefined;
+  return (
+    buildGameTiming({
+      moves,
+      hero,
+      baseSeconds: times.baseSeconds,
+      incrementSeconds: times.incrementSeconds,
+      incrementInferred: times.incrementInferred,
+    }) ?? undefined
+  );
 }
 
 /**
@@ -184,7 +221,20 @@ export function rescopeAnalysis(analysis: GameAnalysis, hero: Color): GameAnalys
     };
   });
 
-  return { ...analysis, hero, moves, ...aggregate(moves, hero) };
+  // Times ride along on the moves, so switching sides only needs the buckets
+  // rebuilt against the other player's pace. Clock settings come from the
+  // existing report; without one there is nothing to rebuild from.
+  const timing = analysis.timing
+    ? (buildGameTiming({
+        moves,
+        hero,
+        baseSeconds: analysis.timing.baseSeconds,
+        incrementSeconds: analysis.timing.incrementSeconds,
+        incrementInferred: analysis.timing.incrementInferred,
+      }) ?? undefined)
+    : undefined;
+
+  return { ...analysis, hero, moves, ...aggregate(moves, hero), timing };
 }
 
 type Aggregates = Pick<

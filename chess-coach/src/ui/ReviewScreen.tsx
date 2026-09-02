@@ -1,16 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { QUALITY_COLORS, QUALITY_LABELS, isMistake } from "../chess/classify";
+import { formatDuration } from "../chess/clock";
 import { formatScore } from "../chess/evaluation";
 import { formatSanLine, parseUci } from "../chess/util";
 import { ANALYSIS_VERSION } from "../engine/analysis";
 import { summariseGame } from "../coach/commentary";
 import { speak, speechSupported, stopSpeaking } from "../coach/voice";
 import { describeError } from "../data/importers";
-import type { AnalysedMove, Color, GameRecord } from "../types";
+import type { AnalysedMove, Color, GameAnalysis, GameRecord } from "../types";
 import { WEAKNESS_LABELS } from "../types";
 import { Board } from "./Board";
+import { ClockGraph } from "./ClockGraph";
 import { EvalGraph } from "./EvalGraph";
 import { ExplainClip } from "./ExplainClip";
+import { TimingPanel } from "./TimingPanel";
 import { useAppState } from "./state";
 
 export function ReviewScreen({ gameId, onBack }: { gameId: string; onBack: () => void }) {
@@ -196,6 +199,8 @@ export function ReviewScreen({ gameId, onBack }: { gameId: string; onBack: () =>
         />
       )}
 
+      <ClockCard analysis={analysis} currentPly={ply} onSelect={setPly} />
+
       {current && isMistake(current.quality) && (
         <section className="card">
           <div className="card-head">
@@ -261,6 +266,51 @@ export function ReviewScreen({ gameId, onBack }: { gameId: string; onBack: () =>
         )}
       </section>
     </div>
+  );
+}
+
+/**
+ * The clock half of the review. Absent for games whose PGN carried no times —
+ * most pasted games — in which case nothing is shown rather than an empty card.
+ */
+function ClockCard({
+  analysis,
+  currentPly,
+  onSelect,
+}: {
+  analysis: GameAnalysis;
+  currentPly: number;
+  onSelect: (ply: number) => void;
+}) {
+  const timing = analysis.timing;
+  if (!timing) return null;
+
+  return (
+    <section className="card">
+      <h2>The clock</h2>
+      <div className="stat-row">
+        <Stat label="Time used" value={formatDuration(timing.totalSeconds)} />
+        <Stat label="Median move" value={formatDuration(timing.medianSeconds)} />
+        <Stat
+          label="Left at end"
+          value={timing.finalClock === null ? "—" : formatDuration(timing.finalClock)}
+        />
+      </div>
+      <ClockGraph
+        moves={analysis.moves}
+        hero={analysis.hero}
+        troubleThreshold={timing.troubleThreshold}
+        currentPly={currentPly}
+        onSelect={onSelect}
+      />
+      <p className="muted small">
+        Your clock in gold, your opponent&apos;s faded. Dots mark your mistakes.
+        {timing.incrementInferred
+          ? " The game carried no usable time control, so the increment was worked out from the clocks themselves and the times may be slightly off."
+          : ""}
+      </p>
+      <TimingPanel report={timing} />
+    </section>
   );
 }
 
@@ -447,6 +497,17 @@ function CommentaryCard({
             {(move.winProbLost * 100).toFixed(1)}%
           </dd>
         </div>
+        {typeof move.secondsSpent === "number" && (
+          <div>
+            <dt>Time taken</dt>
+            <dd>
+              {formatDuration(move.secondsSpent)}
+              {typeof move.clockAfter === "number"
+                ? ` · ${formatDuration(move.clockAfter)} left`
+                : ""}
+            </dd>
+          </div>
+        )}
       </dl>
     </section>
   );

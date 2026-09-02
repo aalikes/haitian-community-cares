@@ -1,5 +1,6 @@
 import { Chess, type Move, type Square } from "chess.js";
 import type { Color } from "../types";
+import { parseClockComment } from "./clock";
 
 export const PIECE_VALUES: Record<string, number> = {
   p: 1,
@@ -122,15 +123,36 @@ export function phaseOf(ply: number, fen: string): Phase {
 export interface ParsedPgn {
   headers: Record<string, string>;
   moves: Move[];
+  /** Seconds left on the mover's clock after each ply, where the PGN said. */
+  clocks: (number | null)[];
+  /** Explicit per-move elapsed times, where the PGN carried `[%emt ...]`. */
+  elapsed: (number | null)[];
 }
 
 /** Parses a single PGN game. Throws if the move text is unreadable. */
 export function parsePgn(pgn: string): ParsedPgn {
   const board = new Chess();
   board.loadPgn(pgn);
+  const moves = board.history({ verbose: true });
+
+  // Comments are keyed by the FEN of the position they follow, which is
+  // exactly `move.after`. Full FENs carry the move number, so positions
+  // repeated by shuffling still get their own comment.
+  const byFen = new Map(board.getComments().map((entry) => [entry.fen, entry.comment]));
+  const clocks: (number | null)[] = [];
+  const elapsed: (number | null)[] = [];
+  for (const move of moves) {
+    const comment = byFen.get(move.after);
+    const parsed = comment ? parseClockComment(comment) : null;
+    clocks.push(parsed?.remaining ?? null);
+    elapsed.push(parsed?.elapsed ?? null);
+  }
+
   return {
     headers: board.getHeaders() as Record<string, string>,
-    moves: board.history({ verbose: true }),
+    moves,
+    clocks,
+    elapsed,
   };
 }
 

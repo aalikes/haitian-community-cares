@@ -105,6 +105,10 @@ export interface AnalysedMove {
   /** How the opponent punishes the move actually played, in SAN. */
   punishLineSan: string[];
   tags: WeaknessTag[];
+  /** Seconds spent on this move, where the PGN carried clock data. */
+  secondsSpent?: number | null;
+  /** Seconds left on the mover's clock after playing it. */
+  clockAfter?: number | null;
   /** Filled in by the commentary generator. */
   headline?: string;
   explanation?: string;
@@ -119,6 +123,69 @@ export interface PhaseLoss {
   endgame: number;
 }
 
+/**
+ * One slice of moves grouped by how long they took, so "fast moves" and
+ * "moves in time trouble" can be compared against everything else on the same
+ * terms: how often they went wrong, and how much they cost.
+ */
+export interface TimingBucket {
+  moves: number;
+  totalSeconds: number;
+  averageSeconds: number;
+  /** Mean win probability lost per move in this bucket, 0..1. */
+  averageLoss: number;
+  /** Inaccuracies, mistakes and blunders. */
+  mistakes: number;
+}
+
+export type TimingFindingKind =
+  | "rushing"
+  | "time-trouble"
+  | "opening-burn"
+  | "long-think-wasted"
+  | "healthy";
+
+export interface TimingFinding {
+  kind: TimingFindingKind;
+  /** Ready to display; already has the numbers in it. */
+  text: string;
+  /** Strongest first. Roughly "how many times worse than the baseline". */
+  severity: number;
+}
+
+export interface TimingReport {
+  /** Hero moves that carried a usable time. */
+  moves: number;
+  totalSeconds: number;
+  medianSeconds: number;
+  /** Seconds of thought spent in each phase, and that as a share of the total. */
+  phaseSeconds: PhaseLoss;
+  phaseShare: PhaseLoss;
+  /** Under a third of your own median for the game. */
+  rushed: TimingBucket;
+  steady: TimingBucket;
+  /** Over twice your own median. */
+  deliberate: TimingBucket;
+  /** Played with less than a fifth of the starting time left. */
+  timeTrouble: TimingBucket;
+  comfortable: TimingBucket;
+  fastThreshold: number;
+  slowThreshold: number;
+  troubleThreshold: number;
+  findings: TimingFinding[];
+}
+
+export interface GameTiming extends TimingReport {
+  baseSeconds: number;
+  incrementSeconds: number;
+  /** True when there was no usable `TimeControl` tag and it had to be guessed. */
+  incrementInferred: boolean;
+  /** First ply where the hero dropped under the time-trouble threshold. */
+  timeTroubleFromPly: number | null;
+  /** Seconds left on the hero's clock at the end. */
+  finalClock: number | null;
+}
+
 export interface GameAnalysis {
   version: number;
   depth: number;
@@ -130,6 +197,8 @@ export interface GameAnalysis {
   counts: Record<MoveQuality, number>;
   phaseLoss: PhaseLoss;
   tagCounts: Partial<Record<WeaknessTag, number>>;
+  /** Absent when the PGN carried no clock data — most pasted games. */
+  timing?: GameTiming;
   completedAt: number;
 }
 

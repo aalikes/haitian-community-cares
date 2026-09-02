@@ -1,11 +1,14 @@
 import { accuracyFromLosses } from "../chess/classify";
 import type {
   GameRecord,
+  GameTiming,
   MoveQuality,
   PhaseLoss,
+  TimingReport,
   WeaknessTag,
 } from "../types";
 import { MOVE_QUALITIES, WEAKNESS_ADVICE, WEAKNESS_LABELS } from "../types";
+import { aggregateTiming } from "./timing";
 
 export interface WeaknessStat {
   tag: WeaknessTag;
@@ -41,6 +44,10 @@ export interface Profile {
   openings: OpeningStat[];
   /** Accuracy over the most recent five games minus the five before that. */
   recentDelta: number | null;
+  /** Clock behaviour pooled across every game that carried one. Null if none did. */
+  timing: TimingReport | null;
+  /** How many analysed games contributed to `timing`. */
+  timedGames: number;
 }
 
 /**
@@ -64,10 +71,12 @@ export function buildProfile(games: GameRecord[]): Profile {
   let movesAnalysed = 0;
   let cpLossTotal = 0;
   const heroLosses: number[] = [];
+  const timings: GameTiming[] = [];
 
   for (const game of analysed) {
     const analysis = game.analysis!;
     trend.push({ playedAt: game.playedAt, accuracy: analysis.accuracy, gameId: game.id });
+    if (analysis.timing) timings.push(analysis.timing);
 
     for (const quality of MOVE_QUALITIES) {
       counts[quality] += analysis.counts[quality] ?? 0;
@@ -129,6 +138,8 @@ export function buildProfile(games: GameRecord[]): Profile {
       }))
       .sort((a, b) => b.games - a.games),
     recentDelta: computeRecentDelta(trend),
+    timing: aggregateTiming(timings),
+    timedGames: timings.length,
   };
 }
 

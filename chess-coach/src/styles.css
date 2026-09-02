@@ -703,6 +703,67 @@ textarea {
   background: var(--accent);
 }
 
+.bar-fill.danger {
+  background: var(--bad);
+}
+
+/* ---------- clock analytics ---------- */
+
+.panel-head {
+  margin: 1rem 0 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.finding-list {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.finding-list li {
+  border-left: 3px solid var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 8px 8px 0;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.88rem;
+}
+
+.finding-list li.bad {
+  border-left-color: var(--bad);
+}
+
+.finding-list li.good {
+  border-left-color: var(--good);
+}
+
+.clock-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.clock-line.opponent {
+  stroke: var(--muted);
+  stroke-width: 1.2;
+  opacity: 0.5;
+}
+
+.clock-trouble {
+  stroke: var(--bad);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: 0.7;
+  vector-effect: non-scaling-stroke;
+}
+
 .quality-bar {
   display: flex;
   height: 12px;
