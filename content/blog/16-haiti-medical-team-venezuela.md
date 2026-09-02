@@ -1,11 +1,22 @@
 ---
 title: "Haiti Deploys Volunteer Medical Team to Earthquake-Hit Venezuela"
 date: 2026-07-09
-category: Health_Education
-source: The Haitian Times
-sourceUrl: https://haitiantimes.com/2026/07/09/haiti-deploys-medical-team-venezuela/
+category: "Health_Education"
+status: "published"
+readTime: 1
 excerpt: "Haiti deploys a volunteer medical team to earthquake-hit Venezuela, demonstrating Haitian humanitarian leadership and solidarity despite domestic challenges."
-status: published
+source: "The Haitian Times"
+sourceUrl: "https://haitiantimes.com/2026/07/09/haiti-deploys-medical-team-venezuela/"
+lang: "en"
+kreyolVersion: false
+---
+
+# Haiti Deploys Volunteer Medical Team to Earthquake-Hit Venezuela
+
+**Read time:** ~1 min
+
+**Excerpt:** Haiti deploys a volunteer medical team to earthquake-hit Venezuela, demonstrating Haitian humanitarian leadership and solidarity despite domestic challenges.
+
 ---
 
 Despite facing its own profound challenges, Haiti has deployed a volunteer medical team to Venezuela to assist victims of a devastating earthquake, demonstrating the spirit of solidarity that has long defined Haitian humanitarianism.
@@ -17,3 +28,7 @@ The medical mission, composed of doctors, nurses, and emergency responders, trav
 The mission carries symbolic weight for a nation often portrayed solely through the lens of crisis. Haiti's medical professionals — many of whom trained in Haiti's own challenged healthcare system — are demonstrating that Haitian expertise and compassion extend far beyond the country's borders.
 
 International observers noted that Haiti's contribution stands in contrast to the narrative that the country is perpetually dependent on foreign aid. "This is Haiti giving back," said one aid worker. "It's a reminder that Haitian people are not just recipients of help — they are providers of it."
+
+---
+
+*Sources: [The Haitian Times](https://haitiantimes.com/2026/07/09/haiti-deploys-medical-team-venezuela/)*

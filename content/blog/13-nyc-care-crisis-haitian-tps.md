@@ -1,11 +1,22 @@
 ---
 title: "New York City Stares Down a Care Crisis as Haitian TPS Workers Face Deportation"
 date: 2026-07-10
-category: Economic_Workforce
-source: Bloomberg
-sourceUrl: https://www.bloomberg.com
+category: "Economic_Workforce"
+status: "published"
+readTime: 1
 excerpt: "NYC's healthcare and home care sectors face severe staffing crisis as Haitian TPS workers — who form the backbone of the care workforce — face work permit expiration."
-status: published
+source: "Bloomberg"
+sourceUrl: "https://www.bloomberg.com"
+lang: "en"
+kreyolVersion: false
+---
+
+# New York City Stares Down a Care Crisis as Haitian TPS Workers Face Deportation
+
+**Read time:** ~1 min
+
+**Excerpt:** NYC's healthcare and home care sectors face severe staffing crisis as Haitian TPS workers — who form the backbone of the care workforce — face work permit expiration.
+
 ---
 
 New York City's healthcare and home care sectors are bracing for a severe staffing crisis as thousands of Haitian TPS holders — who form the backbone of the city's care workforce — face the expiration of their work permits.
@@ -17,3 +28,7 @@ Bloomberg reports that Haitian workers represent a disproportionate share of nur
 The crisis mirrors warnings from Massachusetts, where Senators Warren and Markey released a report estimating that the state needs 60,000 new immigrants annually just to maintain its working-age population. Haitian TPS holders in healthcare, they argued, are not replaceable overnight.
 
 Advocates are calling on city and state governments to explore every legal avenue — including municipal ID programs, emergency employment authorization, and state-level work permits — to protect Haitian workers regardless of federal TPS status.
+
+---
+
+*Sources: [Bloomberg](https://www.bloomberg.com)*
